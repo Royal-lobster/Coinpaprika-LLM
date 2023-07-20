@@ -1,4 +1,4 @@
-# Coinpaprika graphql server
+# Coinpaprika Claude
 
 Experimental project to wrap Coinpaprika API to graphql and integrating it with claude 2 to get 
 graphql query from user questions
