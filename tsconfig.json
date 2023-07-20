@@ -1,22 +1,10 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ESNext"
-    ],
-    "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "bundler",
-    "moduleDetection": "force",
-    "allowImportingTsExtensions": true,
-    "strict": true,
-    "downlevelIteration": true,
-    "skipLibCheck": true,
-    "jsx": "preserve",
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowJs": true,
-    "types": [
-      "bun-types" // add Bun global
-    ]
-  }
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "es2021",
+    "sourceMap": true,
+    "outDir": "dist"
+  },
+  "include": ["src/**/*", "src/.ts"]
 }

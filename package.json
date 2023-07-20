@@ -1,26 +1,30 @@
 {
-  "name": "experiments",
-  "module": "index.ts",
+  "name": "typescript-node-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "type": "module",
-  "devDependencies": {
-    "bun-types": "^0.5.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
   "scripts": {
-    "gen:resolve": "bun run ./src/scripts/resolveRefs.ts",
-    "answer": "npx ts-node-esm ./src/scripts/answer.ts",
-    "gen:graphql": "npx swagger-to-graphql --swagger-schema=./src/data/api.json > ./src/data/types.graphql",
-    "graphql": "bun run ./src/server/index.ts"
+    "gen:schema": "tsx src/scripts/transformSchema.ts > src/data/api.json",
+    "gen:graphql": "npm run gen:schema && swagger-to-graphql --swagger-schema=src/data/api.json > src/data/types.graphql",
+    "graphql": "tsx src/server/index.ts",
+    "answer": "tsx src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.4.2",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@types/express": "^4.17.17",
     "axios": "^1.4.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-graphql": "^0.12.0",
-    "graphql": "15.8.0",
-    "langchain": "^0.0.110",
+    "graphql": "^14.0.0",
+    "langchain": "^0.0.113",
     "openapi-resolver": "^4.1.35",
     "swagger-to-graphql": "^4.0.2"
   }

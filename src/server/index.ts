@@ -4,7 +4,6 @@ import { CallBackendArguments, createSchema } from 'swagger-to-graphql';
 
 const app = express();
 
-// Define your own http client here
 async function callBackend({
     requestOptions: { method, body, baseUrl, path, query, headers },
   }: CallBackendArguments<{}>) {

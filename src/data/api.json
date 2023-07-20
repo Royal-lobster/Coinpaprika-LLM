@@ -384,7 +384,7 @@
                                             "description": "Symbol of the cryptocurrency"
                                         },
                                         "parent": {
-                                            "type": "string",
+                                            "type": "#/coin_parent",
                                             "example": {
                                                 "id": "eth-ethereum",
                                                 "name": "Ethereum",
