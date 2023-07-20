@@ -6,7 +6,7 @@ graphql query from user questions
 ## How to run
 1. Add your CLAUDE_API_KEY to .env file
 2. Run yarn install
-3. You can run graphql server and run answer script to get queries from LLM. 
+3. You can run graphql server and run answer script to get answers to your crypto queries from Claude with help of coinpaprika. 
 check out the commands below 
 
 ## Commands
