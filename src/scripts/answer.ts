@@ -3,7 +3,7 @@ import { HumanMessage, SystemMessage } from "langchain/schema";
 import fs from "fs";
 
 // get -k or --key from command line
-const CLAUDE_API_KEY = process.argv[2];
+const CLAUDE_API_KEY = process.argv.indexOf("-k") > -1 ? process.argv[process.argv.indexOf("-k") + 1] : process.argv.indexOf("--key") > -1 ? process.argv[process.argv.indexOf("--key") + 1] : undefined;
 
 if(!CLAUDE_API_KEY) {
   console.error("Please provide -k or --key as command line argument");
