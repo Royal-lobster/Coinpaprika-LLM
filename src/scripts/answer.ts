@@ -54,18 +54,18 @@ class CoinpaprikaTool extends Tool {
         new SystemMessage(
           `Your task is to generate a graphql query according to the user question and given graphql type defs.
         
-        Graphql Type Defs:
-        ${typeDefs}
+          Graphql Type Defs:
+          ${typeDefs}
 
-        Response structure:
-        - Please answer the question in the form of a graphql query as shown between triple quote delimiters 
-        - Do not explain, just answer with a graphql query in following format:
+          Response structure:
+          - Please answer the question in the form of a graphql query as shown between triple quote delimiters 
+          - Do not explain, just answer with a graphql query in following format:
 
-        """
-        query {
-          // enter generated query here
-        }
-        """
+          """
+          query {
+            // enter generated query here
+          }
+          """
         `
         ),
         new HumanMessage(QUERY),
@@ -104,7 +104,7 @@ const executor = await initializeAgentExecutorWithOptions([new CoinpaprikaTool()
 
 const response = await executor.call({input: QUERY});
 
-console.log(`\n✅ Answer:\n${response.output}`);
-
-
-console.log(`Time Taken: ${performance.now() - now}`);
+console.log(`
+✅ Answer:\n${response.output}
+⏱️ Time Taken: ${performance.now() - now}
+`);
