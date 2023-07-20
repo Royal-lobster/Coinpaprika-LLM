@@ -2,23 +2,27 @@ import { ChatAnthropic } from "langchain/chat_models/anthropic";
 import { HumanMessage, SystemMessage } from "langchain/schema";
 import fs from "fs";
 
-const getInput = (shortKey:string, longKey:string) => {
-  if(!(process.argv.includes(shortKey) || process.argv.includes(longKey))){
-    console.error(`Please provide ${shortKey} or ${longKey} as command line argument`); 
+const getInput = (shortKey: string, longKey: string) => {
+  const allArgs = process.argv;
+  const allKeys = [shortKey, longKey];
+  if (!allArgs.some(arg => allKeys.includes(arg))) {
+    console.error(`Please provide ${shortKey} or ${longKey} as command line argument`);
     process.exit(1);
   }
-  return process.argv.indexOf(shortKey) > -1 ? process.argv[process.argv.indexOf(shortKey) + 1] : process.argv.indexOf(longKey) > -1 ? process.argv[process.argv.indexOf(longKey) + 1] : ""
-}
+  const index = allArgs.findIndex(arg => allKeys.includes(arg));
+  let value = '';
+  for(let i = index + 1; i < allArgs.length; i++) {
+    if(allArgs[i].startsWith('-')) break;
+    value += `${allArgs[i]} `;
+  }
+  value = value.trim();
+  console.log(`Using ${longKey.split("--")[1]} as ${value}`);
+  return value;
+};
 
-// get -k or --key from command line
+
 const CLAUDE_API_KEY = getInput("-k", "--key");
 const QUERY = getInput("-q", "--query");
-
-
-if(!CLAUDE_API_KEY) {
-  console.error("Please provide -k or --key as command line argument");
-  process.exit(1);
-}
 
 const file = fs.readFileSync("src/data/types.graphql");
 const typeDefs = file.toString();
