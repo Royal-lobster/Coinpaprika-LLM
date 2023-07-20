@@ -2,8 +2,18 @@ import { ChatAnthropic } from "langchain/chat_models/anthropic";
 import { HumanMessage, SystemMessage } from "langchain/schema";
 import fs from "fs";
 
+const getInput = (shortKey:string, longKey:string) => {
+  if(!(process.argv.includes(shortKey) || process.argv.includes(longKey))){
+    console.error(`Please provide ${shortKey} or ${longKey} as command line argument`); 
+    process.exit(1);
+  }
+  return process.argv.indexOf(shortKey) > -1 ? process.argv[process.argv.indexOf(shortKey) + 1] : process.argv.indexOf(longKey) > -1 ? process.argv[process.argv.indexOf(longKey) + 1] : ""
+}
+
 // get -k or --key from command line
-const CLAUDE_API_KEY = process.argv.indexOf("-k") > -1 ? process.argv[process.argv.indexOf("-k") + 1] : process.argv.indexOf("--key") > -1 ? process.argv[process.argv.indexOf("--key") + 1] : undefined;
+const CLAUDE_API_KEY = getInput("-k", "--key");
+const QUERY = getInput("-q", "--query");
+
 
 if(!CLAUDE_API_KEY) {
   console.error("Please provide -k or --key as command line argument");
@@ -39,7 +49,7 @@ const response = await model.generate([
         """
         `
       ),
-      new HumanMessage("What is price of bitcoin")
+      new HumanMessage(QUERY)
     ],
   ]);
 
