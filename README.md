@@ -20,4 +20,4 @@ To refresh graphql schema/update openapi, run
 
 ```
 bun run gen:resolve && bun run gen:graphql
-```# coinpaprika-gpt
+```
