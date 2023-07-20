@@ -2,12 +2,20 @@ import { ChatAnthropic } from "langchain/chat_models/anthropic";
 import { HumanMessage, SystemMessage } from "langchain/schema";
 import fs from "fs";
 
+// get -k or --key from command line
+const CLAUDE_API_KEY = process.argv[2];
+
+if(!CLAUDE_API_KEY) {
+  console.error("Please provide -k or --key as command line argument");
+  process.exit(1);
+}
+
 const file = fs.readFileSync("src/data/types.graphql");
 const typeDefs = file.toString();
 
 const model = new ChatAnthropic({
   temperature: 0,
-  anthropicApiKey: "ENTER_CLAUDE_API_KEY_HERE", // In Node.js defaults to process.env.ANTHROPIC_API_KEY
+  anthropicApiKey: CLAUDE_API_KEY, // In Node.js defaults to process.env.ANTHROPIC_API_KEY
   modelName: "claude-2"
 });
 
