@@ -13,7 +13,7 @@ Install bun to run scripts
 
 - Get queries from LLM, 
 ```
-   bun run answer
+   bun run answer -k YOUR_CLAUDE_API_KEY -q "What is price of Bitcoin"
 ```
 
 To refresh graphql schema/update openapi, run 
