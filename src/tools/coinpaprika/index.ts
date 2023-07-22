@@ -2,9 +2,9 @@ import axios from "axios";
 import { BaseChatModel } from "langchain/chat_models";
 import { HumanMessage, SystemMessage } from "langchain/schema";
 import { Tool } from "langchain/tools";
-import { readFileSync } from "fs";
+import { getSimilarModels } from "./getSimilarModels.js";
+import { getSelectModelsSchemas } from "./getSelectModelsSchemas.js";
 
-const typeDefs = readFileSync("src/data/types.graphql").toString();
 
 export class CoinpaprikaTool extends Tool {
   name = "coinpaprika";
@@ -23,17 +23,19 @@ export class CoinpaprikaTool extends Tool {
   }
 
   async _call(input: string) {
+    const similarModels = await getSimilarModels(this.model, input);
+    const filteredSchema = getSelectModelsSchemas(similarModels).join("\n");
     const response = await this.model.generate([
       [
         new SystemMessage(
           `Instructions:
             - Your task is to generate a graphql query according to the user question and given graphql 
-              type defs.
+              schema.
             - You must generate valid graphql query. and make sure the query matches the given graphql
-              type defs.
+              schema.
           
-            Graphql Type Defs:
-            ${typeDefs}
+            Graphql schema:
+            ${filteredSchema}
   
             Response structure:
             - Please answer the question in the form of a graphql query as shown between triple quote delimiters 

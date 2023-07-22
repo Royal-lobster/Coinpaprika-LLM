@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "gen:schema": "tsx src/scripts/transformSchema.ts > src/data/api.json",
-    "gen:graphql": "npm run gen:schema && swagger-to-graphql --swagger-schema=src/data/api.json > src/data/types.graphql",
+    "gen:graphql": "npm run gen:schema && swagger-to-graphql --swagger-schema=src/data/api.json > src/data/schema.graphql",
     "graphql": "tsx src/server/index.ts",
     "answer": "tsx src/index.ts"
   },
