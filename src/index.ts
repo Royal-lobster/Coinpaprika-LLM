@@ -1,7 +1,7 @@
 import { initializeAgentExecutorWithOptions } from "langchain/agents";
 import { ChatAnthropic } from "langchain/chat_models/anthropic";
 import { getArgValue } from "./helpers/getArgValue.js";
-import { CoinpaprikaTool } from "./tools/coinpaprika.js";
+import { CoinpaprikaTool } from "./tools/coinpaprika/index.js";
 import 'dotenv/config'
 
 const QUERY = getArgValue("-q", "--query");

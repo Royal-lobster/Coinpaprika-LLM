@@ -26,13 +26,18 @@ export class CoinpaprikaTool extends Tool {
     const response = await this.model.generate([
       [
         new SystemMessage(
-          `Your task is to generate a graphql query according to the user question and given graphql type defs.
+          `Instructions:
+            - Your task is to generate a graphql query according to the user question and given graphql 
+              type defs.
+            - You must generate valid graphql query. and make sure the query matches the given graphql
+              type defs.
           
             Graphql Type Defs:
             ${typeDefs}
   
             Response structure:
             - Please answer the question in the form of a graphql query as shown between triple quote delimiters 
+            - The answer must start and end with triple quotes.
             - Do not explain, just answer with a graphql query in following format:
   
             """
