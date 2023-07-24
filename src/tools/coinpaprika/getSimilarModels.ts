@@ -4,7 +4,7 @@ import { HumanMessage } from "langchain/schema";
 export const getSimilarModels = async (model: BaseChatModel, question: string) => {
     const prompt = `Your task is to shortlist 5 models from this large list of models that may contain
     answer for the question asked by user. You can select models by entering model names separated by
-    comma.
+    comma. Do not add any other text in the answer. directly start with model names separated by comma.
     
     Question: ${question}
 

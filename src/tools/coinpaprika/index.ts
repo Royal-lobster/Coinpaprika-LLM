@@ -24,7 +24,7 @@ export class CoinpaprikaTool extends Tool {
 
   async _call(input: string) {
     const similarModels = await getSimilarModels(this.model, input);
-    const filteredSchema = getSelectModelsSchemas(similarModels).join("\n");
+    const filteredSchema = getSelectModelsSchemas(similarModels);
     const response = await this.model.generate([
       [
         new SystemMessage(
@@ -37,11 +37,12 @@ export class CoinpaprikaTool extends Tool {
             Graphql schema:
             ${filteredSchema}
   
-            Response structure:
+            Answer format:
             - Please answer the question in the form of a graphql query
             - Do not wrap the query in any other syntax.
             - Answer must start with "query{" and end with "}"
-            - Do not explain, just answer with a graphql query in following format:
+            - Do not add any other text in the answer. directly start with query.
+            - Follow the format to answer below:
   
             query {
               // enter generated query here
@@ -56,7 +57,7 @@ export class CoinpaprikaTool extends Tool {
 
     console.log(`\n🧬 Generated Query:\n${query}`);
 
-    if (!query.startsWith(`query{`) || !query.endsWith(`}`)) {
+    if (!query.startsWith(`query {`) || !query.endsWith(`}`)) {
       console.error(`\n🚨 Generated text does not have valid syntax`);
       process.exit(1);
     }
