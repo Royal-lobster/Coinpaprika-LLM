@@ -38,31 +38,29 @@ export class CoinpaprikaTool extends Tool {
             ${filteredSchema}
   
             Response structure:
-            - Please answer the question in the form of a graphql query as shown between triple quote delimiters 
-            - The answer must start and end with triple quotes.
+            - Please answer the question in the form of a graphql query
+            - Do not wrap the query in any other syntax.
+            - Answer must start with "query{" and end with "}"
             - Do not explain, just answer with a graphql query in following format:
   
-            """
             query {
               // enter generated query here
             }
-            """
           `
         ),
         new HumanMessage(input),
       ],
     ]);
 
-    const generatedText = response.generations[0][0].text.trim();
+    const query = response.generations[0][0].text.trim();
 
-    console.log(`\n🧬 Generated Query:\n${generatedText}`);
+    console.log(`\n🧬 Generated Query:\n${query}`);
 
-    if (!generatedText.startsWith(`"""`) || !generatedText.endsWith(`"""`)) {
-      console.error(`\n🚨 Generated text does not start or end with triple quotes`);
+    if (!query.startsWith(`query{`) || !query.endsWith(`}`)) {
+      console.error(`\n🚨 Generated text does not have valid syntax`);
       process.exit(1);
     }
 
-    const query = generatedText.replaceAll(`"""`, "").trim();
     try {
       const { data } = await axios.post("http://localhost:3009/graphql", {
         query,
