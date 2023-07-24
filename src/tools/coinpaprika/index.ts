@@ -33,6 +33,9 @@ export class CoinpaprikaTool extends Tool {
               schema.
             - You must generate valid graphql query. and make sure the query matches the given graphql
               schema.
+            - Do not try to pass value for JSON fields. treat them like a string.
+            - Do not build the query with empty strings. if you don't have value for a field, just
+              remove that field from the query or input argument as long as it is not required.
           
             Graphql schema:
             ${filteredSchema}
@@ -72,7 +75,7 @@ export class CoinpaprikaTool extends Tool {
         ${stringifiedData}
       `;
     } catch (e) {
-      console.error("\n🚨 Error retrieving data from GraphQL: ", e.message);
+      console.error("\n🚨 Error retrieving data from GraphQL: ", e.response?.data || e);
       process.exit(1);
     }
   }
