@@ -15,21 +15,21 @@ check out the commands below
 This runs coinpaprika graphql wrapper server
 
 ```bash
-   yarn run graphql 
+   yarn graphql 
 ```
 
 ### Running answer script
 Get queries from LLM (Make sure graphql server is running as well)
 
 ```bash
-   yarn run answer -q "What is price of Bitcoin"
+   yarn answer -q "What is price of Bitcoin"
 ```
 
 ### Refresh graphql schemas
 We are copying openapi folder from https://github.com/coinpaprika/coinpaprika.github.io. incase there is a update there we can generate graphql schema by this script 
 
 ```bash
-yarn run gen:resolve && yarn run gen:graphql
+yarn gen:resolve && yarn gen:graphql
 ```
 
 1. coinpaprika openapi spec docs have $ref declarations to split documentation to many files which is not supported by swagger-to-graphql tool. So we are resolving all $ref to one full big json and saving it.
