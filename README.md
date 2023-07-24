@@ -15,14 +15,14 @@ check out the commands below
 This runs coinpaprika graphql wrapper server
 
 ```bash
-   yarn graphql 
+yarn graphql 
 ```
 
 ### Running answer script
 Get queries from LLM (Make sure graphql server is running as well)
 
 ```bash
-   yarn answer -q "What is price of Bitcoin"
+yarn answer -q "What is price of Bitcoin"
 ```
 
 ### Refresh graphql schemas
