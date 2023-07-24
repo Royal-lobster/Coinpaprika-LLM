@@ -22,7 +22,7 @@ This runs coinpaprika graphql wrapper server
 Get queries from LLM (Make sure graphql server is running as well)
 
 ```bash
-   yarn run answer -q -- "What is price of Bitcoin"
+   yarn run answer -q "What is price of Bitcoin"
 ```
 
 ### Refresh graphql schemas
