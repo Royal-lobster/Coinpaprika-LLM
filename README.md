@@ -4,9 +4,9 @@ Experimental project to wrap Coinpaprika API to graphql and integrating it with 
 graphql query from user questions
 
 ## How to run
-1. Add your CLAUDE_API_KEY to .env file
+1. Add your OPENAI_API_KEY to .env file
 2. Run yarn install
-3. You can run graphql server and run answer script to get answers to your crypto queries from Claude with help of coinpaprika. 
+3. You can run graphql server and run answer script to get answers to your crypto queries from GPT with help of coinpaprika. 
 check out the commands below 
 
 ## Commands
