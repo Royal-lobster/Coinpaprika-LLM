@@ -4,6 +4,8 @@ import { HumanMessage, SystemMessage } from "langchain/schema";
 import { Tool } from "langchain/tools";
 import { getSimilarModels } from "./getSimilarModels.js";
 import { getSelectModelsSchemas } from "./getSelectModelsSchemas.js";
+import { patchSchemaForEnums } from "../../scripts/patchSchemaForEnums.js";
+import { getPatchedEnumsSchema } from "./getPatchedEnumsSchema.js";
 
 
 export class CoinpaprikaTool extends Tool {
@@ -25,6 +27,8 @@ export class CoinpaprikaTool extends Tool {
   async _call(input: string) {
     const similarModels = await getSimilarModels(this.model, input);
     const filteredSchema = getSelectModelsSchemas(similarModels);
+    const patchedSchema = getPatchedEnumsSchema(filteredSchema, input);
+
     const response = await this.model.generate([
       [
         new SystemMessage(
@@ -38,7 +42,7 @@ export class CoinpaprikaTool extends Tool {
               remove that field from the query or input argument as long as it is not required.
           
             Graphql schema:
-            ${filteredSchema}
+            ${patchedSchema}
   
             Answer format:
             - Please answer the question in the form of a graphql query
