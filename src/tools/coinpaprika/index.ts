@@ -26,7 +26,7 @@ export class CoinpaprikaTool extends Tool {
   async _call(input: string) {
     const similarModels = await getSimilarModels(this.model, input);
     const filteredSchema = getSelectModelsSchemas(similarModels);
-    const patchedSchema = getPatchedEnumsSchema(filteredSchema, input);
+    const patchedSchema = await getPatchedEnumsSchema(filteredSchema, input);
 
     console.log(`\n🧬 Selected Models Schema:\n${patchedSchema}`);
 
