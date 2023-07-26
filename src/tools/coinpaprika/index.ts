@@ -2,10 +2,9 @@ import axios from "axios";
 import { BaseChatModel } from "langchain/chat_models";
 import { HumanMessage, SystemMessage } from "langchain/schema";
 import { Tool } from "langchain/tools";
-import { getSimilarModels } from "./getSimilarModels.js";
-import { getSelectModelsSchemas } from "./getSelectModelsSchemas.js";
-import { patchSchemaForEnums } from "../../scripts/patchSchemaForEnums.js";
 import { getPatchedEnumsSchema } from "./getPatchedEnumsSchema.js";
+import { getSelectModelsSchemas } from "./getSelectModelsSchemas.js";
+import { getSimilarModels } from "./getSimilarModels.js";
 
 
 export class CoinpaprikaTool extends Tool {
