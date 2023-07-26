@@ -6,6 +6,8 @@ import { PineconeStore } from "langchain/vectorstores/pinecone";
 
 dotenv.config();
 
+const COIN_RANK_THRESHOLD = 1000;
+
 const client = new PineconeClient();
 await client.init({
   apiKey: process.env.PINECONE_API_KEY,
@@ -15,8 +17,8 @@ const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
 
 const url = "https://api.coinpaprika.com/v1/coins"
 const res = await fetch(url)
-const coins = await res.json()
-const coinIds = coins.map((coin: {id: string, name: string, symbol: string}) => {
+const coins = await res.json() as {id: string, name: string, symbol: string, rank: number}[]
+const coinIds = coins.filter(c => c.rank < COIN_RANK_THRESHOLD && c.rank !== 0).map((coin) => {
     return `
     ${coin.id}
     ---

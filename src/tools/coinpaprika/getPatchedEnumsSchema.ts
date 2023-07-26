@@ -19,8 +19,6 @@ export const getPatchedEnumsSchema = async (schema: string, query: string) => {
   /* Search the vector DB independently with meta filters */
   const results = await vectorStore.similaritySearch(query, 15);
 
-  console.log(results);
-
   const enumValues = results.map((result) => result.pageContent.split("---")[0].trim());
   return patchSchemaForEnums("coin_id", "CoinID", enumValues, schema);
 };
