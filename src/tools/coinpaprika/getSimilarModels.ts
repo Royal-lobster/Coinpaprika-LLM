@@ -13,9 +13,6 @@ export const getSimilarModels = async (model: BaseChatModel, question: string) =
     - get_coins_coin_id_events: Contains information about a coin event like date, name, description, etc.
     - get_coins_coin_id_exchanges: Contains information about an exchange where a coin is traded like id, name, trading volume, etc.
     - get_coins_coin_id_markets: Contains information about a market for a coin like exchange, trading pair, prices, quotes, etc.
-    - get_coins_coin_id_ohlcv_historical: Contains OHLCV (open, high, low, close, volume) historical price data for a coin.
-    - get_coins_coin_id_ohlcv_latest_: Contains OHLCV price data for a coin for the latest full day.
-    - get_coins_coin_id_ohlcv_today_: Contains OHLCV price data for a coin for the current day.
     - get_coins_coin_id_twitter: Contains information about a Twitter post for a coin like date, content, likes, etc.
     - get_coins: Contains basic identity and metadata for a coin like id, name, rank, type, etc.
     - get_exchanges_exchange_id_markets: Contains information about a market on an exchange like trading pair, prices, volume, etc.
@@ -37,6 +34,14 @@ export const getSimilarModels = async (model: BaseChatModel, question: string) =
     - getTickersById: Contains ticker data for a single coin.
     - getTickersHistoricalById: Contains historical OHLCV ticker data for a single coin.
     `
+
+    /**
+     * REMOVED ENDPOINTS: 
+     * 
+     * - get_coins_coin_id_ohlcv_historical: Contains OHLCV (open, high, low, close, volume) historical price data for a coin.
+     * - get_coins_coin_id_ohlcv_latest_: Contains OHLCV price data for a coin for the latest full day.
+     * - get_coins_coin_id_ohlcv_today_: Contains OHLCV price data for a coin for the current day.
+     */
 
     const response = await model.generate([
         [
