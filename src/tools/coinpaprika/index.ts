@@ -28,6 +28,8 @@ export class CoinpaprikaTool extends Tool {
     const filteredSchema = getSelectModelsSchemas(similarModels);
     const patchedSchema = getPatchedEnumsSchema(filteredSchema, input);
 
+    console.log(`\n🧬 Selected Models Schema:\n${patchedSchema}`);
+
     const response = await this.model.generate([
       [
         new SystemMessage(
