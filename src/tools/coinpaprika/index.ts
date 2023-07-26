@@ -34,17 +34,22 @@ export class CoinpaprikaTool extends Tool {
       [
         new SystemMessage(
           `Instructions:
-            - Your task is to generate a graphql query according to the user question and given graphql 
-              schema.
-            - You must generate valid graphql query. and make sure the query matches the given graphql
-              schema.
+          
+           Your task is carefully read the user question and generate a valid graphql query in 
+           reference with given graphql schema.
+
+           Graphql schema:
+           ${patchedSchema}
+ 
+           Rules to generate query:
             - Do not try to pass value for JSON fields. treat them like a string.
             - Do not build the query with empty strings. if you don't have value for a field, just
               remove that field from the query or input argument as long as it is not required.
-          
-            Graphql schema:
-            ${patchedSchema}
-  
+            - Always treat enum fields as strings, and pass them as input arguments inside double quotes.
+            - except these, for all, follow graphql rules for query generation. for example, if a field 
+              is required, you must pass value for that field, if you are passing same field multiple times,
+              you must use alias for that field and so on.
+           
             Answer format:
             - Please answer the question in the form of a graphql query
             - Do not wrap the query in any other syntax.
