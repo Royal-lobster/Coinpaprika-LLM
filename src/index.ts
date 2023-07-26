@@ -15,7 +15,7 @@ const model = new ChatOpenAI({
 const now = performance.now();
 
 const executor = await initializeAgentExecutorWithOptions([new CoinpaprikaTool(model)], model, {
-  agentType: "zero-shot-react-description",
+  agentType: "openai-functions",
   verbose: true,
   maxIterations: 8,
   returnIntermediateSteps: true,
