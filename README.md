@@ -1,6 +1,6 @@
-# Coinpaprika Claude
+# Coinpaprika LLM
 
-Experimental project to wrap Coinpaprika API to graphql and integrating it with claude 2 to get 
+Experimental project to wrap Coinpaprika API to graphql and integrating it with LLM to get 
 graphql query from user questions
 
 ## How to run
