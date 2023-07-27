@@ -32,7 +32,7 @@ export const getSimilarModels = async (model: BaseChatModel, question: string) =
     - getPeopleById: Contains information about a person involved in crypto like bio, teams, links, etc.
     - getTickers: Contains ticker data for multiple coins.
     - getTickersById: Contains ticker data for a single coin.
-    - getTickersHistoricalById: Contains historical OHLCV ticker data for a single coin.
+    - getTickersHistoricalById: Contains historical data for given coin like price, volume, market cap, etc.
     `
 
     /**
