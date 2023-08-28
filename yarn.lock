@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@anthropic-ai/sdk@^0.5.3":
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/@anthropic-ai/sdk/-/sdk-0.5.7.tgz#8d5155342cdda95fcf0069594c84d7a1a3abe579"
-  integrity sha512-0uLvrn24D9ehe8KXBFKohmdvMdhPk8jGYGaROOZo46fgbHKSTEOkEv1zmbYw4fAiF/qdPDBNav+8zfW0iD2WOg==
+"@anthropic-ai/sdk@^0.5.7":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@anthropic-ai/sdk/-/sdk-0.5.10.tgz#8cd0b68ac32c71e579b466a89ea30338f2165a32"
+  integrity sha512-P8xrIuTUO/6wDzcjQRUROXp4WSqtngbXaE4GpEu0PhEmnq/1Q8vbF1s0o7W07EV3j8zzRoyJxAKovUJtNXH7ew==
   dependencies:
     "@types/node" "^18.11.18"
     "@types/node-fetch" "^2.6.4"
@@ -841,12 +841,12 @@ jsonpointer@^5.0.1:
   resolved "https://registry.yarnpkg.com/jsonpointer/-/jsonpointer-5.0.1.tgz#2110e0af0900fd37467b5907ecd13a7884a1b559"
   integrity sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==
 
-langchain@^0.0.113:
-  version "0.0.113"
-  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.113.tgz#d87f2338da479be0ce7da6c6ce379545fa4f7ecb"
-  integrity sha512-9BYOyrvlTBfRMh6PwnP0O5MeSV0rbtLaYypyo/VkLwpjiuCV07GI2Gxj7koLFPjbZfe3Kmn2dK+kuM1zwY5x2A==
+langchain@^0.0.135:
+  version "0.0.135"
+  resolved "https://registry.yarnpkg.com/langchain/-/langchain-0.0.135.tgz#d59d2f869259d7b673a18d558b571ed56d37e93a"
+  integrity sha512-H/WdGi6o4BkkD6dU6KlC0U5TAOA22yiuf+kS6AmN16QPSTU25JtcZZK3kYx+0luoJE1iCsxrec09D7Fgy3hEUQ==
   dependencies:
-    "@anthropic-ai/sdk" "^0.5.3"
+    "@anthropic-ai/sdk" "^0.5.7"
     ansi-styles "^5.0.0"
     binary-extensions "^2.2.0"
     camelcase "6"
@@ -856,7 +856,7 @@ langchain@^0.0.113:
     js-tiktoken "^1.0.7"
     js-yaml "^4.1.0"
     jsonpointer "^5.0.1"
-    langsmith "~0.0.11"
+    langsmith "~0.0.26"
     ml-distance "^4.0.0"
     object-hash "^3.0.0"
     openai "^3.3.0"
@@ -868,10 +868,10 @@ langchain@^0.0.113:
     zod "^3.21.4"
     zod-to-json-schema "^3.20.4"
 
-langsmith@~0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/langsmith/-/langsmith-0.0.11.tgz#618099fcd4efc3c38cfedaf33d50d7bbf0957258"
-  integrity sha512-4JTYIog+l3DncDZ9qcHILWYRUz8aI3tfF5arLAKg1k3U7Ivk9SXaYJqF8HPHeCrFxwHeY66NdPc7DqLUKCyoHQ==
+langsmith@~0.0.26:
+  version "0.0.27"
+  resolved "https://registry.yarnpkg.com/langsmith/-/langsmith-0.0.27.tgz#545578f46bed00ae22a7f8dfca567225820d3a0a"
+  integrity sha512-0evLDxxieqExJVZ+2qbZKw1j7f4ywiejWo/9GclxfWIcRo69QuSMhsvZ58ywUeaEY3OaVgT3eB8b5i+QfcdDwg==
   dependencies:
     "@types/uuid" "^9.0.1"
     commander "^10.0.1"
